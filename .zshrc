@@ -37,14 +37,14 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export PATH="$PATH:/home/jordan/.local/bin"
 
 # rate-mirrors and update all packages
-alias ua-drop-caches='sudo paccache -rk3; yay -Sc --aur --noconfirm'
+alias ua-drop-caches='sudo paccache -rk3; paru -Sc --aur --noconfirm'
 alias ua-update-all='export TMPFILE="$(mktemp)"; \
     sudo true; \
     rate-mirrors --save=$TMPFILE arch --max-delay=21600 \
       && sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup \
       && sudo mv $TMPFILE /etc/pacman.d/mirrorlist \
       && ua-drop-caches \
-      && yay -Syyu --noconfirm'
+      && paru -Syyu --noconfirm'
 
 # Add .NET Core SDK tools
 export PATH="$PATH:/home/jordan/.dotnet/tools"
